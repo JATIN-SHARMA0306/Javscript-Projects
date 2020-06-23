@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tip Calculator</title>
+    <style>
+    .container{
+     height: 525px;
+     width: 360px;
+     margin: 100px auto;
+     background: #f7f7f7;
+     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+     border-radius: 20px;
+     -webkit-border-radius: 20px;
+     -moz-border-radius: 20px;
+    }
+    .heading{
+        background: #1F030C;
+        color: white;
+        margin: 0;
+        padding: 10px 100px;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: normal;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+    input,select{
+        margin-left: 20px;
+    }
+    h4{
+        padding-left: 20px;
+    }
+    h3{
+        padding:10px 115px;
+    }
+    </style>
+    <script src="https://use.fontawesome.com/22e91bf0a0.js"></script>
+</head>
+<body style="background:linear-gradient(to right,purple,green);">
+    <div class="container">
+        <h1 class="heading">Tip Calulator</h1>
+        <div class="calcback">
+          <h4>How much was the bill?</h4>
+          <input type="number" id="bill">
+          <h4>How was the service offered?</h4>
+          <select>
+            <option selected disabled>--Choose an Option--</option>
+            <option value="0.3">30&#37; &#45; Outstanding</option>
+            <option value="0.2">20&#37; &#45; Good</option>
+            <option value="0.15">15&#37; &#45; It was OK</option>
+            <option value="0.1">10&#37; &#45; Bad</option>
+            <option value="0.05">10&#37; &#45; Terrible</option>
+           </select>
+           <h4>How many people are sharing the bill?</h4>
+           <input id="share" type="number"><br>
+           <center><button style="background-color: purple; color: #f7f7f7;font-size: 18px;margin-top: 20px;border-radius: 12xp;" type="button">Calculate</button></center>
+           <h3>TIP AMOUNT</h3>
+           <center><i class="fa fa-inr" aria-hidden="true"></i><p></p></center>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    let tip=0;
+    calculate=()=>{
+    const bill=document.getElementById('bill').value;
+    const service=document.querySelector('select').value;
+    const shareable=document.getElementById('share').value;
+    const ele=document.querySelector('p');
+    if(bill==""||service==""){
+    alert("Dont make fields empty!");
+    }
+    else{
+    if(shareable=="")
+    {    
+     tip=(bill*service);
+    }
+    else
+    {
+     tip=(bill*service)/shareable;
+    }
+}
+ele.textContent=tip+" each";
+    }
+  var button=document.querySelector('button');
+  button.addEventListener('click',calculate);
+
+</script>
+</html>
