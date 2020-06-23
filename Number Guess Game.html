@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guess game</title>
+</head>
+<body>
+     <center><label>Enter Number(1-10):  </label><input type="text"><button type="button">SUBMIT</button><p>You have only 8 chances</p></center>
+</body>
+<script>
+    var guessCount=0;
+    submitfinally=()=>{
+    guessCount++; 
+    if(guessCount>8)
+    {
+      var gameover=document.createElement('h2');
+      gameover.textContent="!Game Over Now!";
+      gameover.style.color="red";
+      document.body.appendChild(gameover);
+      buttons.disabled=true;
+      return;
+    }   
+    let randomNumber=Math.floor(Math.random()*10)+1;
+    var input=document.querySelector('input').value;
+    console.log(randomNumber);
+    var result= document.createElement('h3');
+    if(input==randomNumber)
+    {   
+    result.textContent="Wow , You Guessed right";
+    result.style.color="blue";
+    }
+    else
+    {
+        result.textContent="Your Guess was wrong!!";
+        result.style.color="red";
+    }
+    document.body.appendChild(result);
+}
+    var buttons=document.querySelector('button');
+    buttons.addEventListener('click',submitfinally);
+
+</script>
+</html>
