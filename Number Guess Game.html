@@ -9,10 +9,10 @@
      <center><label>Enter Number(1-10):  </label><input type="text"><button type="button">SUBMIT</button><p>You have only 8 chances</p></center>
 </body>
 <script>
-    var guessCount=0;
+    var guessCount=0;//Initialising User's Submit Count
     submitfinally=()=>{
     guessCount++; 
-    if(guessCount>8)
+    if(guessCount>8)//Stop the game when no more chances left
     {
       var gameover=document.createElement('h2');
       gameover.textContent="!Game Over Now!";
@@ -21,7 +21,7 @@
       buttons.disabled=true;
       return;
     }   
-    let randomNumber=Math.floor(Math.random()*10)+1;
+    let randomNumber=Math.floor(Math.random()*10)+1;//generating Random Number
     var input=document.querySelector('input').value;
     console.log(randomNumber);
     var result= document.createElement('h3');
@@ -35,7 +35,7 @@
         result.textContent="Your Guess was wrong!!";
         result.style.color="red";
     }
-    document.body.appendChild(result);
+    document.body.appendChild(result);//appending result
 }
     var buttons=document.querySelector('button');
     buttons.addEventListener('click',submitfinally);
