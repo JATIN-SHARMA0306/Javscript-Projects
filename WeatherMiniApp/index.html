@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+</head>
+<body style="background-image: linear-gradient(blue,green);">
+    <center><label for="cityname" style="color: white; font-weight: bolder; font-size:28px;">Enter your city name: </label>
+        <input id="cityname" style="font-size: 28px;" type="text" placeholder="Enter city here..." value="Delhi"></center>
+        <div id="backg" style="margin-left: 30%;background-color:yellow; width: 40%; padding: 10px;border-style: dashed; border-radius: 20px;border-width: 4px;border-color: tomato;margin-top: 10%;">
+            <h2 id="temp">Feels like: </h2>
+            <h2 class="main"></h2>
+            <h2 class="humidity"></h2>
+            <h2 class="windspeed"></h2>
+            <button id="btn" onclick="getWeather();" style="border-style:solid; border-radius: 10px;padding: 7px; font-size: 18px;border-color: blueviolet; border-width: 4px;">Get Weather</button>
+        </div>
+</body>
+<script>
+    function getWeather(){
+    let tempspace=document.getElementById("temp");
+    let smallDescription=document.getElementsByClassName("main")[0];
+    let humidity=document.getElementsByClassName("humidity")[0];
+    let windSpeed=document.getElementsByClassName("windspeed")[0];
+    let cityname=document.getElementById("cityname").value;
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityname}&appid=d263837b7d57aae594ceb0aa3ac35fdd`)
+   .then(response=>response.json())
+   .then(responsejson=>{
+      tempspace.innerHTML="Feels like: " + Math.floor(responsejson.main.temp-273.15);  
+      smallDescription.innerText = "Small Description: " +(responsejson.weather[0].main);
+      humidity.innerHTML = "Humidity: " +(responsejson.main.humidity);
+      windSpeed.innerHTML = "Wind Speed: " +(responsejson.wind.speed);
+     console.log(responsejson.main.temp-273.15);
+     console.log(responsejson.weather[0].main);
+     if(responsejson.weather[0].main == "Rain")
+    {
+       let backg=document.getElementById("backg");
+       backg.style.backgroundImage="url('rain.gif')";
+       backg.style.backgroundRepeat="no-repeat";
+       backg.style.backgroundSize="cover";
+    }
+    if(responsejson.weather[0].main == "Haze")
+    {
+       let backg=document.getElementById("backg");
+       backg.style.backgroundImage="url('Haze1.gif')";
+       backg.style.backgroundRepeat="no-repeat";
+       backg.style.backgroundSize="cover";
+    }
+    if(responsejson.weather[0].main == "Mist")
+    {
+       let backg=document.getElementById("backg");
+       backg.style.backgroundImage="url('Mist.gif')";
+       backg.style.backgroundRepeat="no-repeat";
+       backg.style.backgroundSize="cover";
+    }
+    if(responsejson.weather[0].main == "Sunny")
+    {
+       let backg=document.getElementById("backg");
+       backg.style.backgroundImage="url('sunny.gif')";
+       backg.style.backgroundRepeat="no-repeat";
+       backg.style.backgroundSize="cover";
+    }
+    if(responsejson.weather[0].main == "Clouds")
+    {
+       let backg=document.getElementById("backg");
+       backg.style.backgroundImage="url('cloud.gif')";
+       backg.style.backgroundRepeat="no-repeat";
+       backg.style.backgroundSize="cover";
+       
+    }
+    if(responsejson.weather[0].main == "Clear")
+    {
+       let backg=document.getElementById("backg");
+       backg.style.backgroundImage="url('clear.gif')";
+       backg.style.backgroundRepeat="no-repeat";
+       backg.style.backgroundSize="cover";
+    }
+   })}
+</script>
+
+</html>
