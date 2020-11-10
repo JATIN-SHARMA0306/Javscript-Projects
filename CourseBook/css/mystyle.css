@@ -1,0 +1,19 @@
+body{
+    background-image: linear-gradient(aliceblue ,turquoise);
+}
+.nav-item{
+    font-size: 20px;
+    color: white;
+}
+.jumbotron{
+    background-image: linear-gradient(blue,pink);
+}
+.nav-link:hover{
+    border-bottom-width: 2px;
+    border-top-width: 2px;
+    border-bottom-color: black;
+    border-top-color: black;
+    border-bottom-style: dashed;
+    border-top-style: dashed;
+    font-size: 22px;
+}
